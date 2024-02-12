@@ -4,7 +4,8 @@
 <!--    <p v-if="selectedPageNumber === pageNumber">{{ pageNumber }} SEL</p>-->
 <!--    <p v-else>{{ pageNumber + '-' +  soundId + '-' + pageId}}</p>-->
     <audio v-bind:id="soundId" v-bind:src="'https://my.anglik.pl/sounds/' + soundId + '.wav'"></audio>
-    <img v-bind:src="'https://my.anglik.pl/images/' + pageId + '.jpg'">
+<!--    <img v-bind:src="'https://my.anglik.pl/images/' + pageId + '.jpg'">-->
+    {{ pageNumber + 1 }}
   </div>
 </template>
 
@@ -13,12 +14,15 @@
   flex-grow: 1;
   border: solid 1px black;
   width:20vw;
-  min-height:15vh;
+  min-height:12vh;
   word-wrap: normal;
   font-family: Arial;
-  font-size: large;
-  font-weight: bold;
   text-align: center;
+  font-size: 4rem;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
@@ -27,6 +31,10 @@ img {
   margin: 10px;
 }
 
+h2 {
+  font-size: xxx-large;
+  font-weight: bolder;
+}
 .page-color-grey {
   background-color: grey;
   opacity: 60%;

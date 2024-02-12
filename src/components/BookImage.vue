@@ -4,6 +4,7 @@
 <!--    <p v-if="selectedBookNumber === bookNumber">{{ bookNumber }} SEL</p>-->
 <!--    <p v-else>{{ bookNumber }}</p>-->
     <img v-bind:src="'https://my.anglik.pl/images/' + bookImage">
+
   </div>
 </template>
 
