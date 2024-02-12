@@ -37,12 +37,12 @@ h2 {
 }
 .page-color-grey {
   background-color: grey;
-  opacity: 60%;
+  //opacity: 60%;
 }
 
 .page-color {
   background-color: v-bind('pageBackColor');
-  opacity: 60%;
+  //opacity: 60%;
 }
 
 .selected {
