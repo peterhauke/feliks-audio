@@ -44,8 +44,9 @@ const emit = defineEmits(['stopAllAudios', 'stopAudios'])
 
 function handleClick(pageNumber, soundId) {
   // alert(pageNumber + soundId);
-  console.log(soundId);
+  console.log("pressed to play: ", soundId);
   emit('stopAllAudios', pageNumber);
+  emit('playAudio', pageNumber, soundId);
 
   const myAudio = document.getElementById(soundId);
   myAudio.currentTime = 0

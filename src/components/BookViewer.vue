@@ -9,7 +9,7 @@
         &nbsp;
       </div>
       <div class="page-panel">
-        <PageImage v-for="(page, index) in pagesVisible" :key="page" :selectedBookNumber="selectedBookNumber" :selectedPageNumber="selectedPageNumber" :pageNumber="index + startPageNumber" :pageBackColor="booksVisible[selectedBookNumber].color" :pageId="page" :soundId="soundsVisible[index]" @stop-all-audios="onStopAllAudios" @select-current-page="selectCurrentPage">{{ page }}
+        <PageImage v-for="(page, index) in pagesVisible" :key="page" :selectedBookNumber="selectedBookNumber" :selectedPageNumber="selectedPageNumber" :pageNumber="index + startPageNumber" :pageBackColor="booksVisible[selectedBookNumber].color" :pageId="page" :soundId="soundsVisible[index]" @play-audio="onPlayAudio" @stop-all-audios="onStopAllAudios" @select-current-page="selectCurrentPage">{{ page }}
         </PageImage>
       </div>
 <!--      <PageControls :selectedBookNumber="selectedBookNumber" :selectedPageNumber="selectedPageNumber" :selectedPage="pagesVisible[selectedPageNumber]" :soundId="soundsVisible[selectedPageNumber]" @increase-by="increasePageCount"></PageControls>-->
@@ -192,7 +192,7 @@ function onStopAllAudios(pageNumber) {
   selectedPageNumber.value = pageNumber;
 
   soundsVisible.forEach(page => {
-    console.log("checking to pause: ", page)
+    // console.log("checking to pause: ", page)
     const myAudio = document.getElementById(page);
     if(!myAudio.paused) {
       myAudio.pause();
@@ -200,6 +200,14 @@ function onStopAllAudios(pageNumber) {
     }
   });
   // const myAudio = document.getElementById(soundId);
+}
+
+function onPlayAudio(pageNumber, soundId) {
+  onStopAllAudios(pageNumber);
+  console.log("PageNumber: ", pageNumber, " SoundId:", soundId);
+  const myAudio = document.getElementById(soundId);
+  myAudio.currentTime = 0
+  myAudio.play();
 }
 
 </script>

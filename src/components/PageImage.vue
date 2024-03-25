@@ -61,15 +61,18 @@ h2 {
     pageId: String
   })
 
-  const emit = defineEmits(['stopAllAudios', 'stopAudios'])
+  const emit = defineEmits(['stopAllAudios', 'stopAudios', 'playAudio'])
 
   function handleClick(pageNumber, soundId) {
     // alert(pageNumber + soundId);
     console.log(soundId);
-    emit('stopAllAudios', pageNumber);
 
-    const myAudio = document.getElementById(soundId);
-    myAudio.currentTime = 0
-    myAudio.play();
+    console.log("pressed to play: ", soundId);
+    // emit('stopAllAudios', pageNumber);
+    emit('playAudio', pageNumber, soundId);
+
+    // const myAudio = document.getElementById(soundId);
+    // myAudio.currentTime = 0
+    // myAudio.play();
   }
 </script>
