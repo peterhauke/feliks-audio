@@ -14,6 +14,7 @@
       </div>
 <!--      <PageControls :selectedBookNumber="selectedBookNumber" :selectedPageNumber="selectedPageNumber" :selectedPage="pagesVisible[selectedPageNumber]" :soundId="soundsVisible[selectedPageNumber]" @increase-by="increasePageCount"></PageControls>-->
     </div>
+    <textarea id="myTextArea"></textarea>
   </div>
 </template>
 
@@ -40,6 +41,12 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+textarea {
+  width: 80vw;
+  height: 50vh;
+}
+
 </style>
 
 <script setup>
@@ -188,6 +195,7 @@ function increasePageCount(n) {
 
 function onStopAllAudios(pageNumber) {
   // alert('I will stop all audios playing now: ' + pageNumber);
+  const textarea = document.getElementById("myTextArea");
 
   selectedPageNumber.value = pageNumber;
 
@@ -197,17 +205,23 @@ function onStopAllAudios(pageNumber) {
     if(!myAudio.paused) {
       myAudio.pause();
       console.log("pausing: ", page)
+      textarea.value += "Pausing sound id: " + page + "\n";
     }
   });
   // const myAudio = document.getElementById(soundId);
 }
 
 function onPlayAudio(pageNumber, soundId) {
+  const textarea = document.getElementById("myTextArea");
+  console.log("Pressed to play: ", soundId);
+  textarea.value += "Pressed to play SoundId:" + soundId + "\n";
   onStopAllAudios(pageNumber);
-  console.log("PageNumber: ", pageNumber, " SoundId:", soundId);
+  console.log("Now Playing PageNumber: ", pageNumber, " SoundId:", soundId);
   const myAudio = document.getElementById(soundId);
   myAudio.currentTime = 0
   myAudio.play();
+
+  textarea.value += "Now Playing PageNumber: " + pageNumber + " SoundId:" + soundId + "\n";
 }
 
 </script>

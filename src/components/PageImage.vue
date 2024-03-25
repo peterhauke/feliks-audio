@@ -65,9 +65,9 @@ h2 {
 
   function handleClick(pageNumber, soundId) {
     // alert(pageNumber + soundId);
-    console.log(soundId);
+    // console.log(soundId);
 
-    console.log("pressed to play: ", soundId);
+    // console.log("pressed to play: ", soundId);
     // emit('stopAllAudios', pageNumber);
     emit('playAudio', pageNumber, soundId);
 
